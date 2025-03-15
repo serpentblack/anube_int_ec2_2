@@ -1,0 +1,28 @@
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS obtenerEdad //
+
+CREATE PROCEDURE obtenerEdad(
+    IN autor_id INT
+)
+BEGIN
+    DECLARE fecha_nacimiento DATE;
+    DECLARE edad INT;
+    
+    -- Obtener la fecha de nacimiento del autor
+    SELECT AUT_DATE_DOB INTO fecha_nacimiento
+    FROM LIB_AUTHORS
+    WHERE AUT_ID = autor_id;
+    
+    -- Calcular la edad usando TIMESTAMPDIFF
+    IF fecha_nacimiento IS NOT NULL THEN
+        SET edad = TIMESTAMPDIFF(YEAR, fecha_nacimiento, CURDATE());
+    ELSE
+        SET edad = NULL;
+    END IF;
+    
+    -- Devolver el resultado directamente
+    SELECT edad AS 'Edad del Autor';
+END //
+
+DELIMITER ;
