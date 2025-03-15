@@ -30,4 +30,5 @@ SELECT AUT_ID,AUT_FIRST_NAME,
 FROM LIB_AUTHORS  
 WHERE AUT_ID = 1;
 
-CALL obtenerEdad(1);
+CALL obtenerDatosLibro(1); -- Donde 1 es el ID del libro que deseas consultar
+CALL obtenerEdad(1); -- Donde 1 es el ID del Autor de quien se obtendra la edad
