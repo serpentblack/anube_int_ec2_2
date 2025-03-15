@@ -1,0 +1,22 @@
+DELIMITER //
+
+CREATE PROCEDURE obtenerDatosLibro(IN libro_id INT)
+BEGIN
+    SELECT 
+        b.BOOK_ID,
+        c.CAT_DESCRIPCION,
+        a.AUT_FIRST_NAME,
+        a.AUT_LAST_NAME,
+        b.BOOK_ISBN,
+        b.BOOK_TITLE
+    FROM 
+        LIB_BOOKS b
+    INNER JOIN 
+        LIB_BOOK_CATEGORIES c ON b.BOOK_CAT_ID = c.CAT_ID
+    INNER JOIN 
+        LIB_AUTHORS a ON b.BOOK_AUT_ID = a.AUT_ID
+    WHERE 
+        b.BOOK_ID = libro_id;
+END //
+
+DELIMITER ;
