@@ -1,5 +1,7 @@
 DELIMITER //
 
+DROP PROCEDURE IF EXISTS obtenerDatosLibro //
+
 CREATE PROCEDURE obtenerDatosLibro(IN libro_id INT)
 BEGIN
     SELECT 
